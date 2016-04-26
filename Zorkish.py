@@ -41,16 +41,57 @@ class User(object):
             sys.exit(0)
         else:
             return hp
+class Room(object):
+    def __init__(self,num):
+        if num==1:
+            items=['sword','shield','book']
+            layout='''
+xxxxxxxx
+x      x
+x      x
+x      x
+xx[]xxxx
+
+'''
+            npc='No one else'
+        self.items=items
+        self.layout=layout
+        self.npc=npc
+
+    def __str__(self):
+        return '%s%s is here' %(self.layout, self.npc)
+
+        
+        
+            
+def pickup(ask,inv):
+    room=Room(1)
+    if ask in room.items:
+        inv.append(ask)
+        return(inv)
+    else:
+        print('%s is not here!' %ask)
 def main():
     def teststart():
         
         starter=User(100,[])
         print(starter)
-        print(starter.hp)
-        print(starter.hpcheck(starter.hp))
+        room=Room(1)
+        print(room)
+        while(True):
+            ask=input('Pick up ')
+            if ask=='stop':
+                break
+            pickup(ask,starter.inventory)
+            print(starter.inventory)
+
+
+        
     def pause(x):
         time.sleep(x)
     teststart()
+
+
 main()
         
             
