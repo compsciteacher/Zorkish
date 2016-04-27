@@ -1,5 +1,5 @@
-
-## Zorkish v .10
+import sys,os
+## Zorkish v .20
 ##
 ##MIT License
 ##
@@ -57,21 +57,37 @@ xx[]xxxx
         self.items=items
         self.layout=layout
         self.npc=npc
+        self.desc="""You wake up in a room with random items scattered around.
+You can't even remember how you got here, but you know you must get out.
+It is unbelievably dark in the room as well. The faster you get out this room,
+the faster you can get out of this terrible place."""
 
     def __str__(self):
-        return '%s%s is here' %(self.layout, self.npc)
+        return '%s\n%s is here \n\n%s' %(self.layout, self.npc,self.desc)
 
         
         
             
-def pickup(ask,inv):
-    room=Room(1)
-    if ask in room.items:
-        inv.append(ask)
-        return(inv)
-    else:
-        print('%s is not here!' %ask)
+
 def main():
+    def choice(u):
+        c=input("What do you do? ")
+        if c=='stop':
+            sys.exit(0)
+        compare(c,u)
+    def compare(c,u):
+        if c in "pickup" or "get":
+            i=c.replace("pickup",'').replace("get",'').strip()
+            pickup(i,u.inventory)
+    def pickup(ask,inv):
+        room=Room(1)
+        if ask in room.items:
+            inv.append(ask)
+            return(inv)
+        else:
+            print('%s is not here!' %ask)
+    def clearit():
+        os.system('cls' if os.name == 'nt' else 'clear')
     def teststart():
         
         starter=User(100,[])
@@ -79,10 +95,9 @@ def main():
         room=Room(1)
         print(room)
         while(True):
-            ask=input('Pick up ')
-            if ask=='stop':
-                break
-            pickup(ask,starter.inventory)
+            choice(starter)
+
+
             print(starter.inventory)
 
 
@@ -93,7 +108,5 @@ def main():
 
 
 main()
-        
-            
             
         
