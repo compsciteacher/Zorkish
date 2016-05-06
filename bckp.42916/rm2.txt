@@ -1,0 +1,16 @@
+6
+xx[]xxxxxxxxxxxxxxxx
+x                  x
+x           A      H
+x                  x
+x     0            x
+xxxxxxxxxxxx[]xxxxxx
+A sleeping old man
+2
+chair
+table
+You step into a room with some light entering through
+a gated window to the East. An old man is lying on
+the floor asleep (at least you hope he is just asleep).
+There is a table and chairs against the Southern wall
+as well as a metal door.

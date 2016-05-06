@@ -4,7 +4,7 @@ x      x
 x      x
 x      x
 xx[]xxxx
-No one else
+no one else
 3
 sword
 shield
@@ -13,3 +13,4 @@ You wake up in a room with random items scattered around.
 You can't even remember how you got here, but you know you must get out.
 It is unbelievably dark in the room as well. The faster you get out this room,
 the faster you can get out of this terrible place.
+done

@@ -1,0 +1,2 @@
+rm1/look/There is a rusty old sword and beat up shield in the room. And the room smells of mold and death./punch/What, are you swinging at the invisible man?
+rm2/look/This might be an old jail cell, but it is hard to tell. The table has spots of blood, and the old man smells of urine and vomit! I wouldn't stick around in here too long either./punch/He's an innocent old man unconscious on the ground! You evil little jerk!

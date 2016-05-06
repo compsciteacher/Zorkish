@@ -40,7 +40,7 @@ def main():
             self.loc=loc
 
         def __str__(self):
-            return 'HP: %s Items: %r' % (self.hp, self.inv)
+            return '%s %r' % (self.hp, self.inv)
 
         def hpcheck(self, hp):
             if hp < 1:
@@ -58,8 +58,7 @@ def main():
         for x in u.inv:
             sv.write(x+"\n")
         sv.close()
-        print("SAVE SUCCESSFUL")
-        choice(u,u.loc)
+        choice(u)
     def load():
         sv=open("sv.txt","r")
         full=sv.read().split('\n')
@@ -68,8 +67,7 @@ def main():
             ni.append(x)
         del ni[-1]
         user=User(full[0],ni,full[1])
-        print("LOAD SUCCESSFUL")
-        choice(user,user.loc)
+        choice(user)
 
 
 
@@ -116,7 +114,7 @@ def main():
             return '%s\n%s is here \n\n%s' % (self.layout, self.npc, self.desc)
 
     def choice(u,r): ##user makes choice of what to do, sends to compare if not stop
-        c=input("What do you do? ").lower()
+        c=input("What do you do? ")
         if c=='stop':
             sys.exit(0)
         compare(c,u,r)
@@ -130,9 +128,9 @@ def main():
             i = c.replace("go", '').replace("walk", '').strip()
             go(i,u,r)
         elif c=="inventory":#prints inventory
-            print("Items: %r "%u.inv)
+            print(u.inv)
         elif c=="diagnostic":
-            print("HP: %r"%u.hpcheck(u.hp))
+            print(u.hpcheck(u.hp))
         elif c=="save":
             save(u)
         elif c=="restore":
@@ -140,11 +138,8 @@ def main():
         elif "look" in c:
             i=c.replace("look",'').strip()
             look(u,r)
-        elif "punch" in c:
-            i=c.replace("punch",'').strip()
-            punch(u,r,i)
         else:
-            print("Looks like you can't do that here")
+            print('huh?')
             choice(u,r)
 
     def pickup(ask,u):#check to see if ask is in the rm item list, if it is add to inv, or tell not there
@@ -155,7 +150,6 @@ def main():
         if ask in room.items:
             u.inv.append(ask)
             removei(ask,u)
-            print("You picked up %s"%ask)
             choice(u,room)
         else:
             print('%s is not here!' %ask)
@@ -205,15 +199,6 @@ def main():
                     print(l[(l.index("look")+1)])
                     choice(u,r)
         choice(u,r)
-    def punch(u,r,i):
-        options=open("interactions.txt","r")
-        for line in options:
-            l=line.rstrip().split("/")
-            if u.loc==l[0]:
-                if "punch" in l:
-                    print(l[(l.index("punch")+1)])
-                    choice(u,r)
-        choice(u,r)
     def clearit():
         os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -237,10 +222,7 @@ def main():
         time.sleep(x)
     print("THIS IS THE BEGINNING")
     teststart()
-try:
 
-    main()
-except:
-    print("Something terrible has happened!")
-    time.sleep(3)
-    main()
+main()
+            
+        
